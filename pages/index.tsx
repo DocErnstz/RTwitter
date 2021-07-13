@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
+import Personal from "./personal";
+
 
 export default function Home() {
   return (
@@ -9,6 +11,9 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div>
+        <Personal/>
+      </div>
 
       <div>
         Go to my own{' '}
