@@ -1,19 +1,26 @@
 import { createMocks } from 'node-mocks-http';
-import handleContact from '../pages/api/contacts';
+import signup from '../pages/api/users/SignUp';
 
-describe('/api/contacts', () => {
+
+
+describe('/api/users', () => {
   test('returns 200 status', async () => {
     const data = {
-      firstName: 'a',
-      lastName: "b",
-      email: "c",
-      avatar: "d"
+      userName: 'a',
+      email: "b",
+      password: "c"
     }
     const { req, res } = createMocks({
       method: 'POST',
       body: JSON.stringify(data)
     });
-    await handleContact(req, res);
+    await signup(req, res);
+    expect(JSON.parse(res._getData())).not.toEqual(
+      expect.objectContaining({
+        message: expect.any(String)
+      }),
+    );
+
     expect(res._getStatusCode()).toBe(200);
   });
 });
