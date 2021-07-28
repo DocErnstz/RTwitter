@@ -1,53 +1,54 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import styles from '../styles/Home.module.css';
-import Personal from "./personal";
+import React, { useState } from "react";
+import Link from "next/link";
+import styles from "../styles/Home.module.css";
+import { useAuth, newUser } from "../context/AuthContext";
+import { Prisma } from "@prisma/client";
+const initialState = {
+  userName: "",
+  password: "",
+  email: "",
+};
 
-import { PrismaClient, Contact, Prisma } from '@prisma/client';
+export default function Home() {
+  const { user, login, register } = useAuth();
+  const [form, setForm] = useState<newUser>(initialState);
+  const [regForm, setRegForm] = useState<Prisma.UserCreateInput>(initialState);
+  const [isSignup, setIsSignup] = useState(false);
 
-import { useState } from 'react';
-
-const prisma = new PrismaClient();
-
-export async function getServerSideProps() {
-  const contacts: Contact[] = await prisma.contact.findMany();
-  return {
-    props: {
-      initialContacts: contacts
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isSignup) {
+      setRegForm({ ...regForm, [e.target.name]: e.target.value });
+    } else {
+      setForm({ ...form, [e.target.name]: e.target.value });
     }
   };
-}
 
-async function saveContact(contact: Prisma.ContactCreateInput) {
-  const response = await fetch('/api/contacts', {
-    method: 'POST',
-    body: JSON.stringify(contact)
-  });
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSignup) {
+      register(regForm);
+    } else {
+      login(form);
+    }
 
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-  return await response.json();
-}
-
-export default function Home({ initialContacts }) {
-  const [contacts, setContacts] = useState(initialContacts);
+    // triggering the callback
+  };
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div>
-        <Personal/>
-      </div>
-
-      <div>
-        Go to my own{' '}
-        <Link href="/personal">
-          <a>Personal Page</a>
-        </Link>
-      </div>
-    </div>
+    <>
+      {isSignup ? (
+        <form onSubmit={onSubmit}>
+          <input type="text" name="userName" onChange={handleChange} />
+          <input type="text" name="email" onChange={handleChange} />
+          <input type="text" name="password" onChange={handleChange} />
+          <input type="submit" value="Send" />
+        </form>
+      ) : (
+        <form onSubmit={onSubmit}>
+          <input type="text" name="email" onChange={handleChange} />
+          <input type="text" name="password" onChange={handleChange} />
+          <input type="submit" value="Send" />
+        </form>
+      )}
+    </>
   );
 }

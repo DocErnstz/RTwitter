@@ -3,7 +3,7 @@ import signup from '../pages/api/users/SignUp';
 
 
 
-describe('/api/users', () => {
+describe('/api/users/signup', () => {
   test('returns 200 status', async () => {
     const data = {
       userName: 'a',
@@ -15,12 +15,13 @@ describe('/api/users', () => {
       body: JSON.stringify(data)
     });
     await signup(req, res);
-    expect(JSON.parse(res._getData())).not.toEqual(
+    expect(JSON.parse(res._getData())).toEqual(
       expect.objectContaining({
         message: expect.any(String)
       }),
     );
 
-    expect(res._getStatusCode()).toBe(200);
+    expect(res._getStatusCode()).toBe(400);
   });
+  
 });
