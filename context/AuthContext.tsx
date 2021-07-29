@@ -1,5 +1,5 @@
 import React, { useContext, createContext, ReactNode, useState } from "react";
-
+import { useRouter } from "next/router";
 import { Prisma } from "@prisma/client";
 export type newUser = {
   userName: string;
@@ -56,17 +56,20 @@ type Props = {
 
 export function AuthProvider({ children }: Props) {
   const [user, setUser] = useState<boolean>(null);
+  const router = useRouter();
 
   const login = (user: newUser) => {
     console.log(user);
     signIn(user).then((result) => {
       console.log(result);
+      router.push("http://localhost:3000/TwSections/main");
       setUser(true);
     });
   };
   const register = (user: Prisma.UserCreateInput) => {
     signUp(user).then((result) => {
       console.log(result);
+      router.push("http://localhost:3000/TwSections/main");
       setUser(true);
     });
   };

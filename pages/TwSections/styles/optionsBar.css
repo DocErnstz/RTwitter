@@ -1,0 +1,72 @@
+.leftbar {
+  display: flex;
+  flex-direction: column;
+  height: 645px;
+}
+
+.header {
+  color: black;
+  flex-basis: 40px;
+}
+
+.leftbar .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 2 0 auto;
+}
+
+.profile {
+  display: flex;
+  color: black;
+  font-size: 10px;
+  flex: 2 0 auto;
+}
+
+.leftbar .container > div {
+  display: flex;
+  font-size: 10px;
+  align-items: center;
+}
+
+.leftbar .container > div,
+.header {
+  padding: 5px;
+}
+
+.leftbar .container > div:hover {
+  background-color: lightseagreen;
+  color: lightskyblue;
+  border-radius: 20px;
+  width: auto;
+}
+
+.leftbar .container > div *:first-child {
+  margin-right: 10px;
+}
+
+.leftbar .container > div:last-child {
+  width: 150px;
+  font-weight: bold;
+  color: #fff;
+  background: lightseagreen;
+  border-radius: 260px;
+  padding: 5px 10px;
+  height: 30px;
+  font-size: 10px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.profile .card {
+  margin-right: 20px;
+}
+
+.profile img {
+  width: 100px;
+}
+.profile .container-row {
+  height: 30px;
+  padding: 5px;
+  align-self: flex-end;
+}

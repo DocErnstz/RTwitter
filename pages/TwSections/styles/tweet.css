@@ -1,0 +1,39 @@
+.post {
+  border-top: 1px solid var(--twitter-background);
+  display: flex;
+  padding: 10px;
+  font-size: 10px;
+}
+
+.post .content {
+  display: flex;
+  flex-direction: column;
+}
+.id {
+  padding-right: 10px;
+}
+.content p {
+  align-self: flex-start;
+  margin-left: 10px;
+}
+
+.content .info {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.action {
+  display: flex;
+}
+
+.actions div:last-child {
+  margin-right: 10px;
+}
+.action p {
+  align-self: center;
+}

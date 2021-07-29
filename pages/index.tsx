@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { useAuth, newUser } from "../context/AuthContext";
@@ -33,6 +34,10 @@ export default function Home() {
 
     // triggering the callback
   };
+  const setSign = (bool: boolean) => {
+    setIsSignup(bool);
+  };
+
   return (
     <>
       {isSignup ? (
@@ -41,12 +46,14 @@ export default function Home() {
           <input type="text" name="email" onChange={handleChange} />
           <input type="text" name="password" onChange={handleChange} />
           <input type="submit" value="Send" />
+          <button onClick={() => setSign(false)}>logIn</button>
         </form>
       ) : (
         <form onSubmit={onSubmit}>
           <input type="text" name="email" onChange={handleChange} />
           <input type="text" name="password" onChange={handleChange} />
           <input type="submit" value="Send" />
+          <button onClick={() => setSign(true)}>SignUp</button>
         </form>
       )}
     </>

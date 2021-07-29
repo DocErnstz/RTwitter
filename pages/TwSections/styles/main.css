@@ -1,0 +1,68 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Roboto", sans-serif;
+}
+body {
+  height: 665px;
+}
+#root {
+  height: 100%;
+  --primary: #000;
+  --twitter-background: #e6ecf0;
+}
+.flex-bars {
+  display: flex;
+  justify-content: center;
+  margin: 0px auto;
+}
+
+.flex-bars > div:first-child {
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  flex-basis: 225px;
+}
+
+.flex-bars > div:nth-child(2) {
+  flex-basis: 500px;
+}
+
+.btn {
+  background-color: lightseagreen;
+  cursor: pointer;
+  border: 2px solid lightseagreen;
+  border-radius: 30px;
+  color: #fff;
+  width: 60%;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+}
+.card {
+  width: 30px;
+  background: lightseagreen;
+  border-radius: 260px;
+
+  height: 30px;
+}
+
+.btn-outline {
+  background-color: transparent;
+  cursor: pointer;
+  border: 2px solid lightseagreen;
+  border-radius: 30px;
+  width: 50px;
+  text-align: center;
+  padding: 5px 0px;
+  color: lightseagreen;
+}
+
+.container-col {
+  display: flex;
+  flex-direction: column;
+}
+.container-row {
+  display: flex;
+  flex-direction: row;
+}

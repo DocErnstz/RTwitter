@@ -1,0 +1,55 @@
+.rightbar {
+  background-color: white;
+}
+
+.users {
+  background: grey;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+.users,
+.searchbar {
+  width: 100%;
+  margin: 10px;
+}
+.searchbar {
+  background: grey;
+  border-radius: 30px;
+  padding: 5px 15px;
+}
+
+.searchbar input {
+  background: grey;
+  border: 2px solid grey;
+}
+input:focus {
+  outline: none;
+}
+
+.users h2 {
+  font-size: 15px;
+}
+
+.users > *:not(:last-child) {
+  border-bottom: 1px solid black;
+}
+.users > * {
+  padding: 5px 0px;
+}
+
+.users .container-row {
+  font-size: 10px;
+  display: flex;
+}
+.users .container-row > div:nth-child(2) {
+  flex: 2 0 auto;
+}
+
+.users .card {
+  margin-right: 5px;
+}
+
+.users .btn-outline {
+  justify-self: flex-end;
+}
