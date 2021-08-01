@@ -6,6 +6,8 @@ import bcrypt from "bcryptjs";
 
 import jwt from "jsonwebtoken";
 
+import Cookies from "cookies";
+
 const secret = "test";
 
 const prisma = new PrismaClient();
@@ -16,6 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
+    const cookies = new Cookies(req, res);
     const newUser: Prisma.UserCreateInput = JSON.parse(req.body);
     const oldUser = await prisma.user.findFirst({
       where: {
@@ -36,6 +39,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const token = jwt.sign({ email: result.email, id: result.id }, secret, {
       expiresIn: "10h",
     });
+    cookies.set("auth_token", token, {
+      httpOnly: true, // true by default
+    });
+
     res.status(200).json({ result, token });
   } catch (err) {
     res.status(400).json(err.message);

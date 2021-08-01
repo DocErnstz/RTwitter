@@ -2,7 +2,7 @@ import React from "react";
 
 const OptionsBar: React.FC = () => {
   return (
-    <div class="leftbar">
+    <div className="leftbar">
       <div className="header"></div>
       <div className="container">
         <div>
@@ -30,13 +30,13 @@ const OptionsBar: React.FC = () => {
           <h1>More</h1>
         </div>
         <div>
-          <div class="text-button">Tweet</div>
+          <div className="text-button">Tweet</div>
         </div>
       </div>
 
       <div className="profile">
         <div className="container-row">
-          <div class="card">
+          <div className="card">
             <img src="images/logos/node.Png" alt="" />
           </div>
 

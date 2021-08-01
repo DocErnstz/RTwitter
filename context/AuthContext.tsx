@@ -31,14 +31,16 @@ export async function signIn(user: newUser) {
 }
 
 type authContextType = {
-  user: boolean;
+  userI: UserData;
+  setter: (userI: UserData) => void;
   login: (user: newUser) => void;
   logout: () => void;
   register: (user: Prisma.UserCreateInput) => void;
 };
 
 const authContextDefaultValues: authContextType = {
-  user: null,
+  userI: null,
+  setter: (userI: UserData) => {},
   login: (user: newUser) => {},
   logout: () => {},
   register: (user: Prisma.UserCreateInput) => {},
@@ -54,32 +56,56 @@ type Props = {
   children: ReactNode;
 };
 
+export type UserData = {
+  createdAt: Date;
+  email: String;
+  id: String;
+  password: String;
+  userName: String;
+  token: String;
+};
+
 export function AuthProvider({ children }: Props) {
-  const [user, setUser] = useState<boolean>(null);
+  const [userI, setUserI] = useState<UserData>(null);
   const router = useRouter();
 
   const login = (user: newUser) => {
-    console.log(user);
     signIn(user).then((result) => {
-      console.log(result);
       router.push("http://localhost:3000/TwSections/main");
-      setUser(true);
+      const userRes: UserData = {
+        createdAt: result.result.createdAt,
+        email: result.result.email,
+        id: result.result.id,
+        password: result.result.password,
+        userName: result.result.userName,
+        token: result.token,
+      };
+      setter(userRes);
     });
   };
   const register = (user: Prisma.UserCreateInput) => {
     signUp(user).then((result) => {
-      console.log(result);
       router.push("http://localhost:3000/TwSections/main");
-      setUser(true);
+      const userRes: UserData = {
+        createdAt: result.result.createdAt,
+        email: result.result.email,
+        id: result.result.id,
+        password: result.result.password,
+        userName: result.result.userName,
+        token: result.token,
+      };
+      setter(userRes);
     });
   };
-
-  const logout = () => {
-    setUser(false);
+  const setter = (userI: UserData) => {
+    setUserI(userI);
   };
 
+  const logout = () => {};
+
   const value = {
-    user,
+    userI,
+    setter,
     login,
     logout,
     register,
