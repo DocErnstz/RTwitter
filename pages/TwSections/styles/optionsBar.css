@@ -1,7 +1,7 @@
 .leftbar {
   display: flex;
   flex-direction: column;
-  height: 645px;
+  height: 665px;
 }
 
 .header {
@@ -69,4 +69,36 @@
   height: 30px;
   padding: 5px;
   align-self: flex-end;
+}
+
+@media (max-width: 1045px) {
+  .leftbar .info {
+    display: none;
+  }
+  .leftbar .card {
+    margin-right: 0px;
+  }
+  .text-button {
+    display: none;
+  }
+  .leftbar .container > div:last-child {
+    width: 24px;
+    background: lightseagreen;
+    border-radius: 260px;
+    height: 24px;
+    padding: 0px;
+  }
+  .leftbar h1 {
+    display: none;
+  }
+  .leftbar {
+    display: flex;
+    align-items: center;
+  }
+  .leftbar .container > div *:first-child {
+    margin-right: 0px;
+  }
+  .container {
+    justify-content: space-between;
+  }
 }

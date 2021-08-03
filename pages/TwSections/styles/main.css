@@ -4,7 +4,7 @@
   font-family: "Roboto", sans-serif;
 }
 body {
-  height: 775px;
+  height: 665px;
 }
 #root {
   height: 100%;
@@ -65,4 +65,15 @@ body {
 .container-row {
   display: flex;
   flex-direction: row;
+}
+
+@media (max-width: 1045px) {
+  .flex-bars > div:first-child {
+    flex-basis: 75px;
+  }
+}
+@media (max-width: 824px) {
+  .flex-bars > div:last-child {
+    display: none;
+  }
 }

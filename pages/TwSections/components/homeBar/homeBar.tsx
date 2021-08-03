@@ -4,9 +4,10 @@ import { useAuth } from "../../../../context/AuthContext";
 import { Prisma } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
-const HomeBar: React.FC = () => {
+const HomeBar: React.FC = (props) => {
   const { posts, setterPosts, userI } = useAuth();
   const [text, settext] = useState<String>("");
+
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     settext(e.target.value);
   };
@@ -51,12 +52,12 @@ const HomeBar: React.FC = () => {
         {posts.length > 0
           ? posts.map((element) => (
               <Post
-                userName={element.result.userName}
-                content={element.result.content}
-                likes={element.result.likes}
-                retweets={element.result.retweets}
-                hearts={element.result.hearts}
-                createdAt={element.result.createdAt}
+                userName={element.userName}
+                content={element.content}
+                likes={element.likes}
+                retweets={element.retweets}
+                hearts={element.hearts}
+                createdAt={element.createdAt}
                 key={uuidv4()}
               />
             ))
