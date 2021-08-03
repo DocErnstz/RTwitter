@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import OptionsBar from "./components/optionsBar/optionsBar";
 import InfoBar from "./components/infoBar/infoBar";
-import HomeBar from "./components/homeBar/homeBar";
+import UserBar from "./components/userBar/userBar";
 import { useAuth } from "../../context/AuthContext";
 
-const Main: React.FC = () => {
+const userMain: React.FC = () => {
   const { userI } = useAuth();
 
   return (
     <>
       <div className="flex-bars">
         <OptionsBar user={userI} />
-        <HomeBar />
+        <UserBar />
         <InfoBar />
       </div>
     </>
   );
 };
-export default Main;
+export default userMain;

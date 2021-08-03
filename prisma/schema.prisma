@@ -22,3 +22,13 @@ model User {
   password String
   createdAt DateTime @default(now())
 }
+
+model Tweet {
+  id     String @id @default(cuid())
+  userName String
+  content String
+  likes Int
+  retweets Int
+  hearts Int
+  createdAt DateTime @default(now())  
+}

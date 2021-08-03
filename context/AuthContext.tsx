@@ -30,17 +30,32 @@ export async function signIn(user: newUser) {
   return response.json();
 }
 
+export async function createTweet(tweet: Prisma.TweetCreateInput) {
+  const response = await fetch("http://localhost:3000/api/tweets/CreateTweet", {
+    method: "POST",
+    body: JSON.stringify(tweet),
+  });
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  return response.json();
+}
+
 type authContextType = {
   userI: UserData;
+  posts: postData[];
   setter: (userI: UserData) => void;
   login: (user: newUser) => void;
   logout: () => void;
   register: (user: Prisma.UserCreateInput) => void;
+  setterPosts: (post: Prisma.TweetCreateInput) => void;
 };
 
 const authContextDefaultValues: authContextType = {
   userI: null,
+  posts: [],
   setter: (userI: UserData) => {},
+  setterPosts: (post: Prisma.TweetCreateInput) => {},
   login: (user: newUser) => {},
   logout: () => {},
   register: (user: Prisma.UserCreateInput) => {},
@@ -64,9 +79,28 @@ export type UserData = {
   userName: String;
   token: String;
 };
+export type postData = {
+  id: String;
+  userName: String;
+  content: String;
+  likes: Number;
+  retweets: Number;
+  hearts: Number;
+  createdAt: Date;
+};
 
 export function AuthProvider({ children }: Props) {
-  const [userI, setUserI] = useState<UserData>(null);
+  const initData: UserData = {
+    createdAt: new Date(Date.now()),
+    email: "#",
+    id: "#",
+    password: "#",
+    userName: "#",
+    token: "#",
+  };
+
+  const [userI, setUserI] = useState<UserData>(initData);
+  const [posts, setPosts] = useState<postData[]>([]);
   const router = useRouter();
 
   const login = (user: newUser) => {
@@ -80,6 +114,7 @@ export function AuthProvider({ children }: Props) {
         userName: result.result.userName,
         token: result.token,
       };
+      console.log(userRes);
       setter(userRes);
     });
   };
@@ -94,21 +129,31 @@ export function AuthProvider({ children }: Props) {
         userName: result.result.userName,
         token: result.token,
       };
+      console.log(userRes);
       setter(userRes);
     });
   };
   const setter = (userI: UserData) => {
     setUserI(userI);
   };
+  const setterPosts = (post: Prisma.TweetCreateInput) => {
+    console.log(post);
+    createTweet(post).then((result) => {
+      console.log(result);
+      setPosts([...posts, result]);
+    });
+  };
 
   const logout = () => {};
 
   const value = {
     userI,
+    posts,
     setter,
     login,
     logout,
     register,
+    setterPosts,
   };
   return (
     <>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const OptionsBar: React.FC = () => {
+const OptionsBar: React.FC = (props) => {
   return (
     <div className="leftbar">
       <div className="header"></div>
@@ -41,8 +41,8 @@ const OptionsBar: React.FC = () => {
           </div>
 
           <div className="info">
-            <h3>Exukasu</h3>
-            <p>@ernesto14568243</p>
+            <h3>{props.user.userName}</h3>
+            <p>{"@" + props.user.userName + "467"}</p>
           </div>
         </div>
       </div>

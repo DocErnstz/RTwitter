@@ -27,6 +27,7 @@ export default function Home() {
     if (isSignup) {
       register(regForm);
     } else {
+      console.log(form);
       login(form);
     }
 
@@ -52,7 +53,7 @@ export default function Home() {
             value={regForm.password}
             onChange={handleChange}
           />
-          <input type="submit" data-testid="btnSub"  value="Send" />
+          <input type="submit" data-testid="btnSub" value="Send" />
           <button aria-label="button-name" onClick={() => setSign(false)}>
             logIn
           </button>
@@ -60,16 +61,15 @@ export default function Home() {
       ) : (
         <form onSubmit={onSubmit}>
           <label htmlFor="em">email</label>
-          <input id="em" type="text" name="email"  onChange={handleChange} />
+          <input id="em" type="text" name="email" onChange={handleChange} />
           <label htmlFor="pass">password</label>
           <input
             id="pass"
             type="text"
             name="password"
-            
             onChange={handleChange}
           />
-          <input type="submit" data-testid="btnSub"  value="Send" />
+          <input type="submit" data-testid="btnSub" value="Send" />
           <button aria-label="button-name" onClick={() => setSign(true)}>
             SignUp
           </button>

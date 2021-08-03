@@ -14,7 +14,7 @@
 .main .tweet {
   display: grid;
   grid-template-columns: 50px 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+
   border-bottom: 1px solid var(--twitter-background);
   padding: 10px 0px;
 }
@@ -30,16 +30,18 @@
 }
 
 .tweet textarea {
-  width: auto;
-  height: 50px;
-  grid-column: 2 / span 2;
+  width: 100%;
+
+  grid-column: 1 / span 2;
   border-bottom: 1px solid var(--twitter-background);
   border-right: none;
   border-left: none;
   border-top: none;
   padding-top: 5px;
+
   resize: none;
-  margin-right: 10px;
+  overflow: hidden;
+  height: 50px;
 }
 
 .tweet textarea:focus {
@@ -56,14 +58,13 @@
   justify-content: center;
   margin-left: 10px;
 }
-.options {
-  display: flex;
-  grid-column: 2 / span 3;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 20px;
-}
 
+form {
+  display: flex;
+  flex-direction: column;
+  width: 362px;
+  align-items: flex-end;
+}
 .main .btn-outline {
   width: 100px;
   padding: 5px 10x;

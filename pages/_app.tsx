@@ -7,6 +7,7 @@ import "./TwSections/styles/optionsBar.css";
 import "./TwSections/styles/homeBar.css";
 import "./TwSections/styles/infoBar.css";
 import "./TwSections/styles/tweet.css";
+import "./TwSections/styles/userBar.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

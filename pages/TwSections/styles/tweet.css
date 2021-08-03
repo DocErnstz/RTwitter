@@ -22,6 +22,10 @@
   flex-direction: row;
   align-items: flex-end;
 }
+.content .comment {
+  width: 344px;
+}
+
 .actions {
   display: flex;
   justify-content: space-between;

@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const cookies = new Cookies(req, res);
 
-    const newUser = JSON.parse(JSON.stringify(req.body));
+    const newUser = JSON.parse(req.body);
 
     const oldUser = await prisma.user.findFirst({
       where: {

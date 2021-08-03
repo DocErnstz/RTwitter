@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Post from "../tweetTemplate/tweetTemplate";
+import { useAuth } from "../../../../context/AuthContext";
+import { Prisma } from "@prisma/client";
+import { v4 as uuidv4 } from "uuid";
 
 const HomeBar: React.FC = () => {
+  const { posts, setterPosts, userI } = useAuth();
+  const [text, settext] = useState<String>("");
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    settext(e.target.value);
+  };
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const tweetForm: Prisma.TweetCreateInput = {
+      userName: String(userI.userName),
+      content: String(text),
+      likes: 0,
+      retweets: 0,
+      hearts: 0,
+    };
+    setterPosts(tweetForm);
+    settext("");
+  };
+
+  const autoGrow = (e) => {
+    e.target.style.height = "50px";
+    e.target.style.height = e.target.scrollHeight + "px";
+  };
+
   return (
     <div className="main">
       <div className="header">
@@ -9,23 +35,32 @@ const HomeBar: React.FC = () => {
       </div>
       <div className="tweet">
         <div className="card"></div>
-        <textarea rows={30} cols={30}>
-          Hello world
-        </textarea>
-        <div className="options">
-          <div className="icons"></div>
-          <a className="btn-outline">Tweet</a>
-        </div>
+        <form action="" onSubmit={onSubmit}>
+          <textarea
+            onInput={autoGrow}
+            rows={30}
+            cols={30}
+            onChange={handleChange}
+            value={String(text)}
+          />
+
+          <input type="submit" className="btn-outline" value="Tweet" />
+        </form>
       </div>
       <div className="posts">
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        {posts.length > 0
+          ? posts.map((element) => (
+              <Post
+                userName={element.result.userName}
+                content={element.result.content}
+                likes={element.result.likes}
+                retweets={element.result.retweets}
+                hearts={element.result.hearts}
+                createdAt={element.result.createdAt}
+                key={uuidv4()}
+              />
+            ))
+          : "laoding"}
       </div>
     </div>
   );
