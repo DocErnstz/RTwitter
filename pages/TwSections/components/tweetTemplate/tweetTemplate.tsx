@@ -27,6 +27,7 @@ const Post = (props) => {
         <div className="comment">{props.content}</div>
         <div className="actions">
           <div className="action">
+            <div className="card"></div>
             <p>{props.likes}</p>
           </div>
           <div className="action">

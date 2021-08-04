@@ -44,6 +44,8 @@ export async function createTweet(tweet: Prisma.TweetCreateInput) {
 type authContextType = {
   userI: UserData;
   posts: postData[];
+  users: UserData[];
+  setUsers: (users: UserData[]) => void;
   setPosts: (posts: postData[]) => void;
   setter: (userI: UserData) => void;
   login: (user: newUser) => void;
@@ -55,6 +57,8 @@ type authContextType = {
 const authContextDefaultValues: authContextType = {
   userI: null,
   posts: [],
+  users: [],
+  setUsers: (users: UserData[]) => {},
   setPosts: (posts: postData[]) => {},
   setter: (userI: UserData) => {},
   setterPosts: (post: Prisma.TweetCreateInput) => {},
@@ -103,6 +107,7 @@ export function AuthProvider({ children }: Props) {
 
   const [userI, setUserI] = useState<UserData>(initData);
   const [posts, setPosts] = useState<postData[]>([]);
+  const [users, setUsers] = useState<UserData[]>([]);
   const router = useRouter();
 
   const login = (user: newUser) => {
@@ -151,6 +156,8 @@ export function AuthProvider({ children }: Props) {
   const value = {
     userI,
     posts,
+    users,
+    setUsers,
     setPosts,
     setter,
     login,

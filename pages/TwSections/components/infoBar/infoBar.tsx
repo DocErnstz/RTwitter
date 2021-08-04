@@ -1,6 +1,13 @@
 import React from "react";
+import { useAuth } from "../../../../context/AuthContext";
+import UserSchema from "../userTemplate/userTemplate";
+import { v4 as uuidv4 } from "uuid";
 
 const InfoBar: React.FC = () => {
+  const { users } = useAuth();
+  const rand = Math.floor(Math.random() * users.length - 3);
+
+  const pickedUsers = users.slice(rand, rand + 3);
   return (
     <div className="rightbar">
       <div className="searchbar container-row">
@@ -8,36 +15,11 @@ const InfoBar: React.FC = () => {
       </div>
       <div className="users container-col">
         <h2>Who to follow</h2>
-        <div className="container-row">
-          <div className="card">
-            <img src="images/logos/node.Png" alt="" />
-          </div>
-          <div className="info">
-            <h3>Pixel_Red_cat </h3>
-            <p>@Pixelredcat</p>
-          </div>
-          <div className="btn-outline">Follow</div>
-        </div>
-        <div className="container-row">
-          <div className="card">
-            <img src="images/logos/node.Png" alt="" />
-          </div>
-          <div className="info">
-            <h3>Pixel_Red_cat </h3>
-            <p>@Pixelredcat</p>
-          </div>
-          <div className="btn-outline">Follow</div>
-        </div>
-        <div className="container-row">
-          <div className="card">
-            <img src="images/logos/node.Png" alt="" />
-          </div>
-          <div className="info">
-            <h3>Pixel_Red_cat </h3>
-            <p>@Pixelredcat</p>
-          </div>
-          <div className="btn-outline">Follow</div>
-        </div>
+        {pickedUsers.length > 0
+          ? pickedUsers.map((element) => (
+              <UserSchema userName={element.userName} key={uuidv4()} />
+            ))
+          : "laoding"}
       </div>
     </div>
   );
