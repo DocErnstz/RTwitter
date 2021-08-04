@@ -20,7 +20,7 @@
 .content .info {
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  position: relative;
 }
 .content .comment {
   width: 344px;
@@ -40,4 +40,67 @@
 }
 .action p {
   align-self: center;
+}
+.deleteBtn {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  margin-left: auto;
+}
+
+.point1,
+.point2,
+.point3 {
+  width: 4px;
+  height: 4px;
+  background: black;
+  margin: 0px 5px;
+}
+.info h1 {
+  z-index: 9;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+  transition: all 0.2 ease-in-out;
+}
+
+.show {
+  animation: show 0.4s ease-in-out;
+  animation-fill-mode: forwards;
+}
+.fusion1 {
+  animation: fusion1 0.4s ease-in-out;
+  animation-fill-mode: forwards;
+}
+.fusion3 {
+  animation: fusion3 0.4s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translate(0px, 0px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(50px, -5px);
+  }
+}
+@keyframes fusion1 {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(10px);
+  }
+}
+@keyframes fusion3 {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(-10px);
+  }
 }

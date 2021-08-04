@@ -15,11 +15,10 @@ export async function getServerSideProps() {
 
 const Main: React.FC = (props) => {
   const { userI, setPosts, posts } = useAuth();
-  console.log(posts);
+
   if (posts.length == 0) {
     setPosts(props.tweets);
   }
-  console.log(posts);
 
   return (
     <>
