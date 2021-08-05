@@ -58,7 +58,7 @@ const HomeBar: React.FC = (props) => {
                 retweets={element.retweets}
                 hearts={element.hearts}
                 createdAt={element.createdAt}
-                id={uuidv4()}
+                id={element.id}
                 key={uuidv4()}
               />
             ))

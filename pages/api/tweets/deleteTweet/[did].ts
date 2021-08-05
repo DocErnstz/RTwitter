@@ -17,8 +17,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         id: String(did),
       },
     });
+    const tweets = await prisma.tweet.findMany({});
 
-    res.status(200).json({ deleteTweet });
+    res.status(200).json({ tweets });
   } catch (err) {
     res.status(400).json(err.message);
   }
