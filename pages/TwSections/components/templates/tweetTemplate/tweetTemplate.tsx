@@ -2,10 +2,9 @@ import React from "react";
 
 const Post = (props) => {
   const deletefn = (e) => {
-    e.target.classList.toggle("show");
-
-    document.getElementById("point1").classList.toggle("fusion1");
-    document.getElementById("point3").classList.toggle("fusion3");
+    document.getElementById(props.id).classList.toggle("show");
+    document.getElementById("point1" + props.id).classList.toggle("fusion1");
+    document.getElementById("point3" + props.id).classList.toggle("fusion3");
   };
   return (
     <div className="post">
@@ -16,12 +15,12 @@ const Post = (props) => {
         <div className="info">
           <h3>{props.userName}</h3>
           <p>{"@" + props.userName + " . " + props.createdAt}</p>
-          <div className="deleteBtn">
-            <div id="point1" className="point1"></div>
+          <div className="deleteBtn" onClick={deletefn}>
+            <div id={"point1" + props.id} className="point1"></div>
             <div className="point2"></div>
-            <div id="point3" className="point3"></div>
+            <div id={"point3" + props.id} className="point3"></div>
           </div>
-          <h1 onClick={deletefn}>delete</h1>
+          <h1 id={props.id}>Delete</h1>
         </div>
 
         <div className="comment">{props.content}</div>
