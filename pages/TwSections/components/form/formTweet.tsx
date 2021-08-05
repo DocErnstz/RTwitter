@@ -20,20 +20,18 @@ const Form = (props) => {
     };
     setterPosts(tweetForm);
     settext("");
+    closeForm();
   };
-  const openForm = (e) => {
+  const closeForm = () => {
     const formTweet = document.getElementById("formTweet");
     formTweet.classList.add("hide");
   };
 
-  const autoGrow = (e) => {
-    e.target.style.height = "50px";
-    e.target.style.height = e.target.scrollHeight + "px";
-  };
+  const autoGrow = (e) => {};
   return (
     <div id="formTweet" className="formTweet hide">
       <div className="options">
-        <div className="cross" onClick={openForm}>
+        <div className="cross" onClick={closeForm}>
           <div className="line1"></div>
           <div className="line2"></div>
         </div>

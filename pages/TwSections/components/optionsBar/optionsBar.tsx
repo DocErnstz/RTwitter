@@ -33,10 +33,8 @@ const OptionsBar: React.FC = (props) => {
         <div>
           <h1>More</h1>
         </div>
-        <div>
-          <div className="text-button" onClick={openForm}>
-            Tweet
-          </div>
+        <div onClick={openForm}>
+          <div className="text-button">Tweet</div>
         </div>
       </div>
 
