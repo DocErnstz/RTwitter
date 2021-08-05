@@ -8,6 +8,7 @@ import "./TwSections/styles/homeBar.css";
 import "./TwSections/styles/infoBar.css";
 import "./TwSections/styles/tweet.css";
 import "./TwSections/styles/userBar.css";
+import "./TwSections/styles/formTweet.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

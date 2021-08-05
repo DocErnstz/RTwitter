@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import OptionsBar from "./components/optionsBar/optionsBar";
 import InfoBar from "./components/infoBar/infoBar";
 import HomeBar from "./components/homeBar/homeBar";
+import Form from "./components/form/formTweet";
 import { useAuth, postData } from "../../context/AuthContext";
 
 export async function getServerSideProps() {
@@ -11,7 +12,7 @@ export async function getServerSideProps() {
   const { users } = await resUser.json();
 
   return {
-    props: { tweets, users }, // will be passed to the page component as props
+    props: { users, tweets }, // will be passed to the page component as props
   };
 }
 
@@ -30,6 +31,7 @@ const Main: React.FC = (props) => {
         <HomeBar />
         <InfoBar />
       </div>
+      <Form />
     </>
   );
 };

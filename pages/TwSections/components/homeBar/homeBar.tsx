@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Post from "../tweetTemplate/tweetTemplate";
+import Post from "../templates/tweetTemplate/tweetTemplate";
 import { useAuth } from "../../../../context/AuthContext";
 import { Prisma } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
