@@ -69,3 +69,6 @@ div > .profileCard:first-child {
 div > .card:first-child {
   background: lightseagreen;
 }
+.hide {
+  display: none;
+}

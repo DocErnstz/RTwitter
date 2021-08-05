@@ -1,6 +1,10 @@
 import React from "react";
 
 const OptionsBar: React.FC = (props) => {
+  const openForm = (e) => {
+    const formTweet = document.getElementById("formTweet");
+    formTweet.classList.toggle("hide");
+  };
   return (
     <div className="leftbar">
       <div className="header"></div>
@@ -30,7 +34,9 @@ const OptionsBar: React.FC = (props) => {
           <h1>More</h1>
         </div>
         <div>
-          <div className="text-button">Tweet</div>
+          <div className="text-button" onClick={openForm}>
+            Tweet
+          </div>
         </div>
       </div>
 

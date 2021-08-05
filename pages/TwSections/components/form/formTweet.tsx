@@ -27,7 +27,7 @@ const Form = (props) => {
     e.target.style.height = e.target.scrollHeight + "px";
   };
   return (
-    <div className="formTweet">
+    <div id="formTweet" className="formTweet hide">
       <div className="options">
         <div className="cross">
           <div className="line1"></div>
