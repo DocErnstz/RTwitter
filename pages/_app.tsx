@@ -9,6 +9,7 @@ import "./TwSections/styles/infoBar.css";
 import "./TwSections/styles/tweet.css";
 import "./TwSections/styles/userBar.css";
 import "./TwSections/styles/formTweet.css";
+import "./TwSections/styles/AuthStyles.css";
 import Form from "./TwSections/components/form/formTweet";
 
 function MyApp({ Component, pageProps }: AppProps) {

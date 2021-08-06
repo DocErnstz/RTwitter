@@ -68,4 +68,5 @@ form {
 .main .btn-outline {
   width: 100px;
   padding: 5px 10x;
+  margin-left: auto;
 }

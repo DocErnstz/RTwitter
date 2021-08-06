@@ -40,40 +40,95 @@ export default function Home() {
   return (
     <>
       {isSignup ? (
-        <form onSubmit={onSubmit}>
-          <label htmlFor="un">userName</label>
-          <input id="un" type="text" name="userName" onChange={handleChange} />
-          <label htmlFor="em">email</label>
-          <input id="em" type="text" name="email" onChange={handleChange} />
-          <label htmlFor="pass">password</label>
-          <input
-            id="pass"
-            type="text"
-            name="password"
-            value={regForm.password}
-            onChange={handleChange}
-          />
-          <input type="submit" data-testid="btnSub" value="Send" />
-          <button aria-label="button-name" onClick={() => setSign(false)}>
-            logIn
-          </button>
-        </form>
+        <div className="signup">
+          <form onSubmit={onSubmit}>
+            <ul className="form-style-1">
+              <li>
+                <h1>Sign Up for Twitter</h1>
+              </li>
+              <li>
+                <input
+                  id="un"
+                  type="text"
+                  name="userName"
+                  onChange={handleChange}
+                  placeholder="UserName"
+                />
+              </li>
+              <li>
+                <input
+                  id="em"
+                  type="email"
+                  name="email"
+                  onChange={handleChange}
+                  placeholder="Email"
+                />
+              </li>
+              <li>
+                <input
+                  id="pass"
+                  type="text"
+                  name="password"
+                  value={regForm.password}
+                  onChange={handleChange}
+                  placeholder="Password"
+                />
+              </li>
+              <li>
+                <input
+                  type="submit"
+                  id="btnSub"
+                  data-testid="btnSub"
+                  value="Send"
+                />
+              </li>
+              <li>
+                <a aria-label="button-name" onClick={() => setSign(false)}>
+                  Sing In
+                </a>
+              </li>
+            </ul>
+          </form>
+        </div>
       ) : (
-        <form onSubmit={onSubmit}>
-          <label htmlFor="em">email</label>
-          <input id="em" type="text" name="email" onChange={handleChange} />
-          <label htmlFor="pass">password</label>
-          <input
-            id="pass"
-            type="text"
-            name="password"
-            onChange={handleChange}
-          />
-          <input type="submit" data-testid="btnSub" value="Send" />
-          <button aria-label="button-name" onClick={() => setSign(true)}>
-            SignUp
-          </button>
-        </form>
+        <div className="signin">
+          <form onSubmit={onSubmit}>
+            <ul className="form-style-1">
+              <li>
+                <h1>Sign In for Twitter</h1>
+              </li>
+              <li>
+                <input
+                  id="em"
+                  type="text"
+                  name="email"
+                  onChange={handleChange}
+                />
+              </li>
+              <li>
+                <input
+                  id="pass"
+                  type="text"
+                  name="password"
+                  onChange={handleChange}
+                />
+              </li>
+              <li>
+                <input
+                  type="submit"
+                  id="btnSub"
+                  data-testid="btnSub"
+                  value="Send"
+                />
+              </li>
+              <li>
+                <a aria-label="button-name" onClick={() => setSign(true)}>
+                  SignUp
+                </a>
+              </li>
+            </ul>
+          </form>
+        </div>
       )}
     </>
   );
