@@ -58,7 +58,7 @@
   margin: 0px 5px;
   transition: all 0.4s ease-in-out;
 }
-.info h1 {
+.content .info h1 {
   z-index: 0;
   position: absolute;
   right: 0;

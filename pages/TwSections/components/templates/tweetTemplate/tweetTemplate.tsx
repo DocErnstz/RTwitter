@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth } from "../../../../../context/AuthContext";
 
 const Post = (props) => {
-  const { setPosts } = useAuth();
+  const { setPosts, posts } = useAuth();
   const openfn = (e) => {
     document.getElementById(props.id).classList.toggle("show");
     document.getElementById("point1" + props.id).classList.toggle("fusion1");
@@ -20,6 +20,20 @@ const Post = (props) => {
     console.log(newTweets);
     setPosts(newTweets.tweets);
   };
+  const action = async (e) => {
+    console.log(e.target.id);
+    const response = await fetch(
+      `http://localhost:3000/api/tweets/actionTweet/${props.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify({ updateProp: e.target.id }),
+      }
+    );
+
+    const newTweets = await response.json();
+    setPosts(newTweets.tweets);
+  };
+
   return (
     <div className="post">
       <div className="id">
@@ -42,16 +56,16 @@ const Post = (props) => {
         <div className="comment">{props.content}</div>
         <div className="actions">
           <div className="action">
-            <div className="card"></div>
-            <p>{props.likes}</p>
+            <div className="card" id="likes" onClick={action}></div>
+            <p>{props.likes == 0 ? "" : props.likes}</p>
           </div>
           <div className="action">
-            <div className="card"></div>
-            <p>{props.retweets}</p>
+            <div className="card" id="retweets" onClick={action}></div>
+            <p>{props.retweets == 0 ? "" : props.retweets}</p>
           </div>
           <div className="action">
-            <div className="card"></div>
-            <p>{props.hearts}</p>
+            <div className="card" id="hearts" onClick={action}></div>
+            <p>{props.hearts == 0 ? "" : props.hearts}</p>
           </div>
           <div className="action">
             <div className="card"></div>

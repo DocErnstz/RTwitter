@@ -11,7 +11,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const { aid } = req.query;
-    const property = req.body.updateProp;
+    const up = JSON.parse(req.body);
+    const property = up.updateProp;
     const tweet = await prisma.tweet.findFirst({
       where: {
         id: String(aid),
@@ -42,8 +43,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         [property]: name + 1,
       },
     });
+    const tweets = await prisma.tweet.findMany({});
 
-    res.status(200).json({ updateTweet });
+    res.status(200).json({ tweets });
   } catch (err) {
     res.status(400).json(err.message);
   }

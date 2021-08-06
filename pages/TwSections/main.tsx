@@ -31,7 +31,6 @@ const Main: React.FC = (props) => {
         <HomeBar />
         <InfoBar />
       </div>
-      <Form />
     </>
   );
 };

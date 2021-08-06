@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const OptionsBar: React.FC = (props) => {
   const openForm = (e) => {
@@ -10,7 +11,9 @@ const OptionsBar: React.FC = (props) => {
       <div className="header"></div>
       <div className="container">
         <div>
-          <h1>Home</h1>
+          <h1>
+            <Link href="/TwSections/main">Home</Link>
+          </h1>
         </div>
         <div>
           <h1>Explore</h1>
@@ -28,7 +31,9 @@ const OptionsBar: React.FC = (props) => {
           <h1>Lists</h1>
         </div>
         <div>
-          <h1>Profile</h1>
+          <h1>
+            <Link href="/TwSections/userMain">Profile</Link>
+          </h1>
         </div>
         <div>
           <h1>More</h1>
