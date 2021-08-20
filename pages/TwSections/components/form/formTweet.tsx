@@ -5,6 +5,7 @@ import { Prisma } from "@prisma/client";
 const Form = (props) => {
   const { setterPosts, userI } = useAuth();
   const [text, settext] = useState<String>("");
+  console.log(userI.userName);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     settext(e.target.value);

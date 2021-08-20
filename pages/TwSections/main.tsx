@@ -1,28 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import OptionsBar from "./components/optionsBar/optionsBar";
 import InfoBar from "./components/infoBar/infoBar";
 import HomeBar from "./components/homeBar/homeBar";
 import Form from "./components/form/formTweet";
-import { useAuth, postData } from "../../context/AuthContext";
+import { useAuth, postData, UserData } from "../../context/AuthContext";
+import Cookies from "cookies";
+import jwt from "jsonwebtoken";
 
-export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3000/api/tweets/getTweets`);
+export async function getServerSideProps({ req, res }) {
+  const resTweets = await fetch(`http://localhost:3000/api/tweets/getTweets`);
   const resUser = await fetch(`http://localhost:3000/api/users/getUsers`);
-  const { tweets } = await res.json();
+  const { tweets } = await resTweets.json();
   const { users } = await resUser.json();
+  const cookies = new Cookies(req, res);
+  const decodedData = jwt.decode(cookies.get("auth_token"));
 
   return {
-    props: { users, tweets }, // will be passed to the page component as props
+    props: { users, tweets, decodedData }, // will be passed to the page component as props
   };
 }
 
 const Main: React.FC = (props) => {
-  const { userI, setPosts, posts, setUsers } = useAuth();
+  const { userI, setPosts, posts, setUsers, setUserI } = useAuth();
 
-  if (posts.length == 0) {
-    setPosts(props.tweets);
-  }
-  setUsers(props.users);
+  useEffect(() => {
+    if (posts.length == 0) {
+      setPosts(props.tweets);
+    }
+
+    setUsers(props.users);
+    const userData: UserData = {
+      createdAt: userI.createdAt,
+      email: props.decodedData.email,
+      id: props.decodedData.id,
+      password: userI.password,
+      userName: props.decodedData.name,
+      token: userI.token,
+    };
+
+    setUserI(userData);
+  }, []);
 
   return (
     <>

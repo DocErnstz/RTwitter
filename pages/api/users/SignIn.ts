@@ -39,9 +39,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (!isPasswordCorrect)
       return res.status(400).json({ message: "Invalid credentials" });
 
-    const token = jwt.sign({ email: oldUser.email, id: oldUser.id }, secret, {
-      expiresIn: "10h",
-    });
+    const token = jwt.sign(
+      {
+        email: oldUser.email,
+        name: oldUser.userName,
+        id: oldUser.id,
+        createdAt: oldUser.createdAt,
+      },
+      secret,
+      {
+        expiresIn: "10h",
+      }
+    );
     cookies.set("auth_token", token, {
       httpOnly: true, // true by default
     });

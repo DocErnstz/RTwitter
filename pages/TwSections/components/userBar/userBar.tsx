@@ -3,7 +3,7 @@ import Post from "../templates/tweetTemplate/tweetTemplate";
 import { useAuth } from "../../../../context/AuthContext";
 import { v4 as uuidv4 } from "uuid";
 
-const UserBar: React.FC = () => {
+const UserBar: React.FC = (props) => {
   const { posts } = useAuth();
   const Filter = (e) => {
     e.target.classList.add("selected");
@@ -15,7 +15,7 @@ const UserBar: React.FC = () => {
           <div className="triangle"></div>
         </div>
         <div className="info">
-          <h3>Exukasu</h3>
+          <h3>{props.user.userName}</h3>
           <p>63 Tweets</p>
         </div>
       </div>
@@ -27,8 +27,8 @@ const UserBar: React.FC = () => {
         </div>
         <div className="row-2">
           <div className="names">
-            <h3>Exukasu</h3>
-            <p>@ernesto145789</p>
+            <h3>{props.user.userName}</h3>
+            <p>{"@" + props.user.userName + "467"}</p>
           </div>
         </div>
         <div className="row-3">

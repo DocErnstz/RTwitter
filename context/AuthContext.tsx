@@ -47,6 +47,7 @@ type authContextType = {
   users: UserData[];
   setUsers: (users: UserData[]) => void;
   setPosts: (posts: postData[]) => void;
+  setUserI: (user: UserData) => void;
   setter: (userI: UserData) => void;
   login: (user: newUser) => void;
   logout: () => void;
@@ -60,6 +61,7 @@ const authContextDefaultValues: authContextType = {
   users: [],
   setUsers: (users: UserData[]) => {},
   setPosts: (posts: postData[]) => {},
+  setUserI: (user: UserData) => {},
   setter: (userI: UserData) => {},
   setterPosts: (post: Prisma.TweetCreateInput) => {},
   login: (user: newUser) => {},
@@ -159,6 +161,7 @@ export function AuthProvider({ children }: Props) {
     users,
     setUsers,
     setPosts,
+    setUserI,
     setter,
     login,
     logout,
