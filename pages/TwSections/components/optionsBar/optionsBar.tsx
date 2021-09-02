@@ -7,55 +7,70 @@ const OptionsBar: React.FC = (props) => {
     formTweet.classList.remove("hide");
   };
   return (
-    <div className="leftbar">
-      <div className="header"></div>
-      <div className="container">
-        <div>
-          <h1>
-            <Link href="/TwSections/main">Home</Link>
-          </h1>
-        </div>
-        <div>
-          <h1>Explore</h1>
-        </div>
-        <div>
-          <h1>Notification</h1>
-        </div>
-        <div>
-          <h1>Messages</h1>
-        </div>
-        <div>
-          <h1>Bookmarks</h1>
-        </div>
-        <div>
-          <h1>Lists</h1>
-        </div>
-        <div>
-          <h1>
-            <Link href="/TwSections/userMain">Profile</Link>
-          </h1>
-        </div>
-        <div>
-          <h1>More</h1>
-        </div>
-        <div onClick={openForm}>
-          <div className="text-button">Tweet</div>
-        </div>
-      </div>
-
-      <div className="profile">
-        <div className="container-row">
-          <div className="card">
-            <img src="images/logos/node.Png" alt="" />
+    <div className="flex flex-col lg:w-72 lg:flex-initial mr-4 h-screen sticky top-0 left-0">
+          <div className="flex-initial mx-auto lg:ml-2 my-4 ">
+            <a href=""><i className="fab fa-twitter fa-2x"></i></a>
           </div>
-
-          <div className="info">
-            <h3>{props.user.userName}</h3>
-            <p>{"@" + props.user.userName + "467"}</p>
+          
+          <div className="flex-initial lg:flex-1 lg:ml-2 mb-12 items-center lg:items-start flex flex-col gap-4 ">
+            <div className="flex-initial lg:flex-1 flex gap-4 rounded-full buttonHover transition-all	items-center">
+              <a href="" className="flex-initial w-8">
+                <i className="fas fa-home fa-2x"></i>
+              </a>
+              <h1 className="text-xl hidden lg:block ">Home</h1>
+            </div>
+            <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
+              <a href="" className="flex-initial w-8">
+              <i className="fas fa-hashtag fa-2x"></i>
+            </a>
+              <h1 className="text-xl hidden lg:block ">Explore</h1>
+            </div>
+            <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
+              <a href="" className="flex-initial w-8"><i className="far fa-bell fa-2x"></i></a>
+              <h1 className="text-xl hidden lg:block ">Notifications</h1>
+            </div>
+            <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
+              <a href="" className="flex-initial w-8"><i className="far fa-envelope fa-2x"></i></a>
+              <h1 className="text-xl hidden lg:block ">Messages</h1>
+            </div>
+            <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
+              <a href="" className="flex-initial w-8"><i className="far fa-bookmark fa-2x mx-auto"></i></a>
+              <h1 className="text-xl hidden lg:block ">Bookmarks</h1>
+            </div>
+            <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
+              <a href="" className="flex-initial w-8"><i className="fas fa-list fa-2x"></i></a>
+              <h1 className="text-xl hidden lg:block ">Lists</h1>
+            </div>
+            <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
+              <a href="" className="flex-initial w-8"><i className="far fa-user fa-2x"></i></a>
+              <h1 className="text-xl hidden lg:block ">Profile</h1>
+            </div>
+            <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
+              <a href="" className="flex-initial w-8"><i className="far fa-comment-dots fa-2x"></i></a>
+              <h1 className="text-xl hidden lg:block ">More</h1>
+            </div>
+           
+          </div>
+ 
+          <button type="button" id="TweetModal" className="relative bg-blue-300 lg:p-6 lg:py-3 lg:w-4/5 my-4 lg:my-0 rounded-full mt-7 cursor-pointer transition-all group hover:bg-blue-900">
+           
+              <h1 className="font-medium hidden lg:block text-white group-hover:text-black group-hover:text-xl transition-all">Tweet</h1>
+              <div className="block lg:hidden">
+                <i className="fas fa-feather-alt fa-2x"></i>
+              </div>
+              
+            
+          </button>
+          <div className="flex-1 flex flex-col lg:ml-2 justify-end">
+            <div className="grid grid-cols-1 lg:grid-cols-profileAd  grid-rows-2">
+              <div className="row-start-1 row-end-3">
+                <i className="fas fa-user fa-2x m-4"></i>
+              </div>
+              <div className="col-span-2 hidden lg:block">Exukasu</div>
+              <div className="col-span-2 hidden lg:block">@ernesto19182398</div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
   );
 };
 
