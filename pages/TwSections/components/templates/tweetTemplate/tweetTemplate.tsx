@@ -35,44 +35,43 @@ const Post = (props) => {
   };
 
   return (
-    <div className="post">
-      <div className="id">
-        <div className="card"></div>
-      </div>
-      <div className="content">
-        <div className="info">
-          <h3>{props.userName}</h3>
-          <p>{"@" + props.userName + " . " + props.createdAt}</p>
-          <div className="deleteBtn" onClick={openfn}>
-            <div id={"point1" + props.id} className="point1"></div>
-            <div className="point2"></div>
-            <div id={"point3" + props.id} className="point3"></div>
+    <div className="grid grid-cols-tweet grid-rows-4 border-l-2 border-r-2 border-b-2 border-white">
+            <div className=" row-start-1 row-end-5">
+              <i className="fas fa-user fa-2x m-4"></i>
+            </div>
+            <div className=" col-span-4"><div className="flex h-full text-center">
+              <h1 className="h-3/6 my-auto">Ernesto Mercado</h1>
+            </div></div>
+            <div className="col-span-4 row-span-2"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore, consequatur asperiores expedita provident qui deleniti. Ad harum facilis dolorum iure, corrupti itaque aperiam unde? Dicta cupiditate corporis dolorum quod iste.</p></div>
+            <div className="col-span-4">
+              <div className="flex my-2">
+                <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="far fa-comment fa-2x"></i>
+                  </a>
+                  <h1>11</h1>
+                </div>
+                 <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="fas fa-retweet fa-2x"></i>
+                  </a>
+                  <h1>11</h1>
+                </div>
+                 <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="far fa-heart fa-2x"></i>
+                  </a>
+                  <h1>11</h1>
+                </div>
+                 <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="fas fa-upload fa-2x"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <h1 id={props.id} onClick={deletefn}>
-            Delete
-          </h1>
-        </div>
-
-        <div className="comment">{props.content}</div>
-        <div className="actions">
-          <div className="action">
-            <div className="card" id="likes" onClick={action}></div>
-            <p>{props.likes == 0 ? "" : props.likes}</p>
-          </div>
-          <div className="action">
-            <div className="card" id="retweets" onClick={action}></div>
-            <p>{props.retweets == 0 ? "" : props.retweets}</p>
-          </div>
-          <div className="action">
-            <div className="card" id="hearts" onClick={action}></div>
-            <p>{props.hearts == 0 ? "" : props.hearts}</p>
-          </div>
-          <div className="action">
-            <div className="card"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+         
   );
 };
 

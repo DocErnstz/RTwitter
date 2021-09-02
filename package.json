@@ -11,6 +11,9 @@
     "update": "jest --updateSnapshot"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
     "@prisma/client": "^2.27.0",
     "bcryptjs": "^2.4.3",
     "cookies": "^0.8.0",
@@ -24,6 +27,7 @@
     "react-test-renderer": "^17.0.2",
     "sqlite": "^4.0.23",
     "supertest": "^6.1.4",
+    "tailwindcss": "^2.2.9",
     "test-listen": "^1.1.0",
     "uuid": "^8.3.2"
   },

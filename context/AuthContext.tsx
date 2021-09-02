@@ -27,6 +27,7 @@ export async function signIn(user: newUser) {
   if (!response.ok) {
     throw new Error(response.statusText);
   }
+
   return response.json();
 }
 
@@ -114,6 +115,7 @@ export function AuthProvider({ children }: Props) {
 
   const login = (user: newUser) => {
     signIn(user).then((result) => {
+      console.log(result);
       router.push("http://localhost:3000/TwSections/main");
       const userRes: UserData = {
         createdAt: result.result.createdAt,

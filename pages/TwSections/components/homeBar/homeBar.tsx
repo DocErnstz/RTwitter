@@ -30,26 +30,20 @@ const HomeBar: React.FC = (props) => {
   };
 
   return (
-    <div className="main">
-      <div className="header">
-        <h3>Home</h3>
-      </div>
-      <div className="tweet">
-        <div className="card"></div>
-        <form action="" onSubmit={onSubmit}>
-          <textarea
-            onInput={autoGrow}
-            rows={30}
-            cols={30}
-            onChange={handleChange}
-            value={String(text)}
-          />
-
-          <input type="submit" className="btn-outline" value="Tweet" />
-        </form>
-      </div>
-      <div className="posts">
-        {posts.length > 0
+     <div className="flex flex-col flex-1 lg:flex-initial lg:w-5/12" id="HomeBar">
+          <div className="flex border-l-2 border-r-2 border-gray-200 h-16">
+            <h1 className="text-xl my-auto mx-2">Home</h1>
+          </div>
+          <div className="grid grid-cols-profileAd grid-rows-tweetAd border-gray-200 border-2" id="tweetForm">
+            <div className="row-start-1 row-end-3"><i className="fas fa-user fa-2x m-4"></i></div>
+            <div className="col-span-2 row-span-1"><textarea onInput={autoGrow} name="" id="tweetArea" className="h-14 w-full resize-none outline-none overflow-hidden mt-2 text-xl font-medium" value="Hello World"></textarea></div>
+            <div className="col-span-2">
+              <div className="flex justify-end w-11/12 my-auto">
+                <button className="rounded-full bg-blue-300 p-4  w-2/6 group hover:bg-blue-900 transition-colors"><h1 className="text-white group-hover:text-xl group-hover:text-black font-medium transition-all">Tweet</h1></button>
+              </div>
+            </div>
+          </div>
+           {posts.length > 0
           ? posts.map((element) => (
               <Post
                 userName={element.userName}
@@ -63,8 +57,7 @@ const HomeBar: React.FC = (props) => {
               />
             ))
           : "laoding"}
-      </div>
-    </div>
+        </div>
   );
 };
 

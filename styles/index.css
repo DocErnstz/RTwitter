@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+
+.buttonHover {
+}
+.buttonHover:hover{
+    @apply bg-white p-4;
+}
+
+.tweetHover{
+
+}
+.tweetHover{
+    @apply text-xl text-black;
+}
+
+
