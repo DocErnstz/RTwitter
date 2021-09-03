@@ -16,18 +16,23 @@ a {
   box-sizing: border-box;
 }
 
-.ModalHide{
+.btnAnim:active{
+  background-color: grey;
+}
+
+#modal.ModalHide{
   left: 0;
   opacity: 0;
   z-index: -99;
 }
 
 @media (max-width: 768px) {
-    .ModalHide{
+    #modal{
         left: 0;
         top: 0;
         border-radius: 0px;
         width: 100vw;
         height: 100vh;
+        z-index: 12;
     }
 }

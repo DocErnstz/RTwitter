@@ -39,7 +39,7 @@ const Form = (props) => {
          </button>
         <form onSubmit={onSubmit} className="grid grid-cols-profileAd grid-rows-tweetAd rounded-2xl" id="tweetForm">
          
-            <div className="row-start-1 row-end-3"> <i className="fas fa-user fa-2x m-4"></i></div>
+            <div className="row-start-1 row-end-3 mb-auto"> <i className="fas fa-user fa-2x m-4"></i></div>
             <div className="col-span-2 row-span-1"><textarea onInput={autoGrow} name="" id="tweetArea" className="h-32 w-full resize-none outline-none overflow-hidden mt-2 bg-gray-700 text-xl font-medium">Whats Happening</textarea></div>
             <div className="col-span-2">
               <div className="flex justify-end w-11/12 my-auto">

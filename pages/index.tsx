@@ -51,10 +51,10 @@ export default function Home() {
             <input type="name" name="userName" className="p-2  w-full rounded-2xl focus:outline-none shadow-2xl border-2" onChange={handleChange} placeholder="name"/>
             <label htmlFor="" className="py-4 text-2xl mr-auto">Password</label>
             <input type="password" name="password" className="p-2 rounded-2xl w-full focus:outline-none shadow-2xl border-2" onChange={handleChange} placeholder="Password"/>
-            <input type="submit" className="bg-blue-600 text-white p-4 border-blue rounded-3xl my-5 w-full shadow-2xl  font-medium" value="Sign Up"/>
+            <input type="submit" className="bg-blue-600 text-white p-4 border-blue rounded-3xl my-5 w-full shadow-2xl transition-all cursor-pointer hover:p-5 hover:text-2xl font-medium btnAnim" value="Sign Up"/>
         </form>
         <div className="flex justify-end">
-            <button className="text-white" onClick={() => setSign(false)}><h1 className="text-white  font-medium transition-all">Sign In</h1></button>
+            <button className="text-white cursor-pointer" onClick={() => setSign(false)}><h1 className="text-white font-medium transition-all">Sign In</h1></button>
         </div>
     </div>
       ) : (
@@ -66,7 +66,7 @@ export default function Home() {
             <input type="email" name="email" className="p-4  w-full rounded-2xl focus:outline-none shadow-3xl border-2" onChange={handleChange} placeholder="name@example.com"/>
             <label htmlFor="" className="py-4 text-2xl mr-auto">Password</label>
             <input type="password" name="password" className="p-4 rounded-2xl w-full focus:outline-none shadow-3xl border-2" onChange={handleChange} placeholder="Password"/>
-            <input type="submit" className="bg-blue-600 text-white p-4 rounded-3xl my-5 w-full  font-medium" value="Sign In"/>
+            <input type="submit" className="bg-blue-600 text-white p-4 rounded-3xl my-5 w-full hover:p-5 hover:text-2xl active:text-dark transition-all cursor-pointer font-medium btnAnim" value="Sign In"/>
         </form>
         <div className="flex justify-end">
             <button className="text-white" onClick={() => setSign(true)}><h1 className="text-white font-medium transition-all">Sign Up</h1></button>

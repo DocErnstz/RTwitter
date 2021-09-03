@@ -1,6 +1,7 @@
 import React, { useContext, createContext, ReactNode, useState } from "react";
 import { useRouter } from "next/router";
 import { Prisma } from "@prisma/client";
+
 export type newUser = {
   userName: string;
   password: string;
@@ -22,6 +23,18 @@ export async function signIn(user: newUser) {
   const response = await fetch("http://localhost:3000/api/users/SignIn", {
     method: "POST",
     body: JSON.stringify(user),
+  });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return response.json();
+}
+
+export async function ClearCookies() {
+  const response = await fetch("http://localhost:3000/api/users/logout", {
+    method: "GET",
   });
 
   if (!response.ok) {
@@ -155,7 +168,13 @@ export function AuthProvider({ children }: Props) {
     });
   };
 
-  const logout = () => {};
+  const logout = () => {
+    
+    ClearCookies().then(() => {
+      setUserI(initData);
+      router.push("http://localhost:3000/");
+    });
+  };
 
   const value = {
     userI,
