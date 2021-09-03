@@ -1,6 +1,11 @@
 import React from "react";
 
-const UserSchema: React.FC = (props) => {
+
+interface USProps {
+  userName: String
+  key: String
+}
+const UserSchema: React.FC<USProps> = (props : USProps) => {
   return (
     <div className="flex items-center m-4">
                 <i className="fas fa-user fa-2x m-4"></i>

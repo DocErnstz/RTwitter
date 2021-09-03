@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import jwt from "jsonwebtoken";
-import OptionsBar from "./components/optionsBar/optionsBar";
-import InfoBar from "./components/infoBar/infoBar";
-import UserBar from "./components/userBar/userBar";
-import { useAuth, UserData } from "../../context/AuthContext";
+import OptionsBar from "../../components/optionsBar/optionsBar";
+import InfoBar from "../../components/infoBar/infoBar";
+import UserBar from "../../components/userBar/userBar";
+import { useAuth, UserData, postData } from "../../context/AuthContext";
 import Cookies from "cookies";
 
 export async function getServerSideProps({ req, res }) {
@@ -19,7 +19,19 @@ export async function getServerSideProps({ req, res }) {
   };
 }
 
-const userMain: React.FC = (props) => {
+interface SubUser {
+  email: String
+  id: String
+  name: String
+}
+
+interface UserMainProps{
+  users: UserData[]
+  tweets: postData[]
+  decodedData: SubUser
+}
+
+const userMain: React.FC<UserMainProps> = (props: UserMainProps) => {
   const { userI, setPosts, posts, setUsers, setUserI } = useAuth();
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Post from "../templates/tweetTemplate/tweetTemplate";
-import { useAuth } from "../../../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import { Prisma } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
@@ -40,7 +40,7 @@ const HomeBar: React.FC = (props) => {
             <div className="col-span-2 row-span-1"><textarea onInput={autoGrow}  onChange={handleChange} name="" id="tweetArea" className="h-32 w-full resize-none outline-none overflow-hidden mt-2 text-xl font-medium">Whats Happenning</textarea></div>
             <div className="col-span-2">
               <div className="flex justify-end w-11/12 my-auto">
-                <button className="rounded-full bg-blue-300 p-4  w-2/6 group hover:bg-blue-900 transition-colors"><input type="submit" className="text-white btnAnim bg-transparent group-hover:text-xl cursor-pointer group-hover:text-black font-medium transition-all" value="Tweet" /></button>
+                <button className="rounded-full bg-blue-300 p-4  w-2/6 group hover:bg-blue-900 transition-colors btnAnim"><input type="submit" className="text-white  bg-transparent group-hover:text-xl cursor-pointer group-hover:text-black font-medium transition-all" value="Tweet" /></button>
               </div>
             </div>
           </form>

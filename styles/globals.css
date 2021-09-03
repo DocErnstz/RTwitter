@@ -13,7 +13,33 @@ a {
 }
 
 * {
+  padding: 0px;
+  margin: 0px;
   box-sizing: border-box;
+}
+body {
+  height: 665px;
+}
+#root {
+  height: 100%;
+  --primary: #000;
+  --twitter-background: #e6ecf0;
+}
+.flex-bars {
+  display: flex;
+  justify-content: center;
+  margin: 0px auto;
+}
+
+.flex-bars > div:first-child {
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  flex-basis: 225px;
+}
+
+.flex-bars > div:nth-child(2) {
+  flex-basis: 500px;
 }
 
 .btnAnim:active{

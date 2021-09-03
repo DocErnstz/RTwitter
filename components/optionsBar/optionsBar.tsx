@@ -1,8 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import { useAuth } from "../../../../context/AuthContext";
+import { useAuth, UserData } from "../../context/AuthContext";
 
-const OptionsBar: React.FC = (props) => {
+interface OProps{
+  user: UserData
+}
+
+
+const OptionsBar: React.FC<OProps> = ({ user } : OProps) => {
    const { logout } = useAuth();
 
    const ClearCookies = (e) => {
@@ -21,11 +26,11 @@ const OptionsBar: React.FC = (props) => {
           </div>
           
           <div className="flex-initial lg:flex-1 lg:ml-2 mb-12 items-center lg:items-start flex flex-col gap-4 ">
-            <div className="flex-initial lg:flex-1 flex gap-4 rounded-full buttonHover transition-all	items-center">
-              <a href="" className="flex-initial w-8 btnAnim">
-               <Link href="/TwSections/main"><i className="fas fa-home fa-2x"></i></Link> 
+            <div className="flex-initial lg:flex-1 flex gap-4 rounded-full buttonHover transition-all	items-center btnAnim">
+              <a href="" className="flex-initial w-8">
+               <i className="fas fa-home fa-2x"></i>
               </a>
-              <h1 className="text-xl hidden lg:block">Home</h1>
+              <h1 className="text-xl hidden lg:block"><Link href="/TwSections/main">Home</Link></h1>
             </div>
             <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
               <a href="" className="flex-initial w-8 btnAnim">
@@ -49,8 +54,8 @@ const OptionsBar: React.FC = (props) => {
               <a href="" className="flex-initial w-8 btnAnim"><i className="fas fa-list fa-2x"></i></a>
               <h1 className="text-xl hidden lg:block ">Lists</h1>
             </div>
-            <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
-              <a href="" className="flex-initial w-8 btnAnim"><i className="far fa-user fa-2x"></i></a>
+            <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full btnAnim">
+              <a href="" className="flex-initial w-8 "><i className="far fa-user fa-2x"></i></a>
               <h1 className="text-xl hidden lg:block "> <Link href="/TwSections/userMain">Profile</Link></h1>
             </div>
             <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
@@ -83,8 +88,8 @@ const OptionsBar: React.FC = (props) => {
               <div className="row-start-1 row-end-3">
                 <i className="fas fa-user fa-2x m-4"></i>
               </div>
-              <div className="col-span-2 hidden lg:block">{props.user.userName}</div>
-              <div className="col-span-2 hidden lg:block">{"@" + props.user.userName + "467"}</div>
+              <div className="col-span-2 hidden lg:block">{user.userName}</div>
+              <div className="col-span-2 hidden lg:block">{"@" + user.userName + "467"}</div>
             </div>
           </div>
         </div>
