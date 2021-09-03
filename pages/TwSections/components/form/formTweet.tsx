@@ -24,42 +24,30 @@ const Form = (props) => {
     closeForm();
   };
   const closeForm = () => {
-    const formTweet = document.getElementById("formTweet");
-    formTweet.classList.add("hide");
+    const formTweet = document.getElementById("modal");
+    formTweet.classList.add("ModalHide");
   };
 
-  const autoGrow = (e) => {};
+  const autoGrow = (e) => {
+    e.target.style.height = "50px";
+    e.target.style.height = e.target.scrollHeight + "px";
+  };
   return (
-    <div id="formTweet" className="formTweet hide">
-      <div className="options">
-        <div className="cross" onClick={closeForm}>
-          <div className="line1"></div>
-          <div className="line2"></div>
-        </div>
-      </div>
-      <div className="tweetForm">
-        <div className="tweet">
-          <div className="profileCard"></div>
-          <form action="" onSubmit={onSubmit}>
-            <textarea
-              onInput={autoGrow}
-              rows={30}
-              cols={30}
-              onChange={handleChange}
-              value={String(text)}
-            />
-            <div className="items">
-              <div className="card"></div>
-              <div className="card"></div>
-              <div className="card"></div>
-              <div className="card"></div>
+   <div id="modal" className="bg-gray-700 fixed w-96 left-96 ModalHide rounded-2xl transition-all">
+         <button className="flex p-5" id="crossDelete" onClick={closeForm}>
+            <i className="fas fa-times fa-2x"></i>
+         </button>
+        <form onSubmit={onSubmit} className="grid grid-cols-profileAd grid-rows-tweetAd rounded-2xl" id="tweetForm">
+         
+            <div className="row-start-1 row-end-3"> <i className="fas fa-user fa-2x m-4"></i></div>
+            <div className="col-span-2 row-span-1"><textarea onInput={autoGrow} name="" id="tweetArea" className="h-32 w-full resize-none outline-none overflow-hidden mt-2 bg-gray-700 text-xl font-medium">Whats Happening</textarea></div>
+            <div className="col-span-2">
+              <div className="flex justify-end w-11/12 my-auto">
+                <button className="rounded-full bg-blue-300 p-4  w-2/6 group hover:bg-blue-900 transition-colors"><input type="submit" className="text-white group-hover:text-xl bg-transparent cursor-pointer group-hover:text-black font-medium transition-all" value="Tweet"/></button>
+              </div>
             </div>
-
-            <input type="submit" className="btn-outline" value="Tweet" />
           </form>
-        </div>
       </div>
-    </div>
   );
 };
 

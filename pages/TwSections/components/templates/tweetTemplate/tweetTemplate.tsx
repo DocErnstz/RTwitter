@@ -40,9 +40,9 @@ const Post = (props) => {
               <i className="fas fa-user fa-2x m-4"></i>
             </div>
             <div className=" col-span-4"><div className="flex h-full text-center">
-              <h1 className="h-3/6 my-auto">Ernesto Mercado</h1>
+              <h1 className="h-3/6 my-auto">{props.userName}</h1>
             </div></div>
-            <div className="col-span-4 row-span-2"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore, consequatur asperiores expedita provident qui deleniti. Ad harum facilis dolorum iure, corrupti itaque aperiam unde? Dicta cupiditate corporis dolorum quod iste.</p></div>
+            <div className="col-span-4 row-span-2"><p>{props.content}</p></div>
             <div className="col-span-4">
               <div className="flex my-2">
                 <div className="flex flex-1 items-center">
@@ -61,7 +61,7 @@ const Post = (props) => {
                   <a href="" className="mr-2">
                    <i className="far fa-heart fa-2x"></i>
                   </a>
-                  <h1>11</h1>
+                  <h1>{props.likes}</h1>
                 </div>
                  <div className="flex flex-1 items-center">
                   <a href="" className="mr-2">

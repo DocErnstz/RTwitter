@@ -6,80 +6,122 @@ import { v4 as uuidv4 } from "uuid";
 const UserBar: React.FC = (props) => {
   const { posts } = useAuth();
   const Filter = (e) => {
-    e.target.classList.add("selected");
+    e.target.classNameList.add("selected");
   };
   return (
-    <div className="userMain">
-      <div className="nav">
-        <div className="back">
-          <div className="triangle"></div>
-        </div>
-        <div className="info">
-          <h3>{props.user.userName}</h3>
-          <p>63 Tweets</p>
-        </div>
-      </div>
-      <div className="backgroundProfile"></div>
-      <div className="profileInfo">
-        <div className="row-1">
-          <div className="card"></div>
-          <div className="btn-outline">Edit Profile</div>
-        </div>
-        <div className="row-2">
-          <div className="names">
-            <h3>{props.user.userName}</h3>
-            <p>{"@" + props.user.userName + "467"}</p>
+    <div className="flex flex-col  flex-1 lg:flex-initial lg:w-5/12 border-white border-l-2  border-r-2" id="UserBar">
+             <div className="flex">
+               <div className="p-4"><i className="fas fa-arrow-left"></i></div>
+               <div className="flex flex-col flex-1">
+                 <h3 className="text-gray-600">{props.user.userName}</h3>
+                  <p className="text-gray-600">99 Tweets</p>
+               </div>
+             </div>
+             <div className="flex items-end h-56 bg-gray-600">
+               <div className="border-black flex items-center justify-center border-8 w-32 h-32 ml-4 -mb-12 rounded-full">
+                 <i className="fas fa-user fa-5x mx-auto mt-4"></i>
+               </div>
+               
+             </div>
+             <div className="ml-auto">
+               <button className="rounded-full border-white text-white border-2 p-2 m-2 font-mono font-medium">Edit Profile</button>
+             </div>
+             <div className="w-11/12   mx-auto">
+              <div className="flex-column">
+               <h2 className="text-gray-600">{props.user.userName}</h2>
+               <p className="text-gray-600">{"@" + props.user.userName + "467"}</p>
+             </div>
+             <p>on my way to become a SWE</p>
+             <div className="flex ">
+               <div className="flex items-center">
+                 <i className="fas fa-map-marker-alt fa-2x"></i>
+                 <h3 className="p-3">Argentina</h3>
+               </div>
+               <div className="flex items-center">
+                 <i className="far fa-calendar fa-2x"></i>
+                 <h3 className="p-3">1 June</h3>
+               </div>
+             </div>
+             </div>
+             <div className="flex text-center" id="TweetSections">
+               <div className="flex-grow p-3 relative text-white ">Tweet</div>
+              <div className="flex-grow p-3 relative text-white">Replies</div>
+                <div className="flex-grow p-3 relative text-white">Media</div>
+                <div className="flex-grow p-3 relative text-white">Likes</div>
+             </div>
+             <div className="grid grid-cols-tweet grid-rows-4 border-t-2 border-white">
+            <div className=" row-start-1 row-end-5">
+              <i className="fas fa-user fa-2x m-4"></i>
+            </div>
+            <div className=" col-span-4"><div className="flex h-full text-center">
+              <h1 className="h-3/6 my-auto">Ernesto Mercado</h1>
+            </div></div>
+            <div className="col-span-4 row-span-2"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore, consequatur asperiores expedita provident qui deleniti. Ad harum facilis dolorum iure, corrupti itaque aperiam unde? Dicta cupiditate corporis dolorum quod iste.</p></div>
+            <div className="col-span-4">
+              <div className="flex my-2">
+                <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="far fa-comment fa-2x"></i>
+                  </a>
+                  <h1>11</h1>
+                </div>
+                 <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="fas fa-retweet fa-2x"></i>
+                  </a>
+                  <h1>11</h1>
+                </div>
+                 <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="far fa-heart fa-2x"></i>
+                  </a>
+                  <h1>11</h1>
+                </div>
+                 <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="fas fa-upload fa-2x"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+           <div className="grid grid-cols-tweet grid-rows-4 border-t-2 border-white">
+            <div className=" row-start-1 row-end-5">
+               <i className="fas fa-user fa-2x m-4"></i>
+            </div>
+            <div className=" col-span-4"><div className="flex h-full text-center">
+              <h1 className="h-3/6 my-auto">Ernesto Mercado</h1>
+            </div></div>
+            <div className="col-span-4 row-span-2"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore, consequatur asperiores expedita provident qui deleniti. Ad harum facilis dolorum iure, corrupti itaque aperiam unde? Dicta cupiditate corporis dolorum quod iste.</p></div>
+            <div className="col-span-4">
+              <div className="flex my-2">
+                <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="far fa-comment fa-2x"></i>
+                  </a>
+                  <h1>11</h1>
+                </div>
+                 <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="fas fa-retweet fa-2x"></i>
+                  </a>
+                  <h1>11</h1>
+                </div>
+                 <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="far fa-heart fa-2x"></i>
+                  </a>
+                  <h1>11</h1>
+                </div>
+                 <div className="flex flex-1 items-center">
+                  <a href="" className="mr-2">
+                   <i className="fas fa-upload fa-2x"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="row-3">
-          <p>Actually Working</p>
-        </div>
-        <div className="row-4">
-          <div className="spacetime">
-            <div className="space">
-              <div className="card"></div>
-              <p>Argentina</p>
-            </div>
-            <div className="time">
-              <div className="card"></div>
-              <p>Joined July 2020</p>
-            </div>
-          </div>
-        </div>
-        <div className="row-5">
-          <div className="followersInfo">
-            <div className="following">
-              <p>12</p>
-              <p>Following</p>
-            </div>
-            <div className="followers">
-              <p>5</p>
-              <p>Followers</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="sections">
-        <p onClick={Filter}>Tweets</p>
-        <p onClick={Filter}>Tweets and replies</p>
-        <p onClick={Filter}>Media</p>
-        <p onClick={Filter}>Likes</p>
-      </div>
-      {posts.length > 0
-        ? posts.map((element) => (
-            <Post
-              userName={element.userName}
-              content={element.content}
-              likes={element.likes}
-              retweets={element.retweets}
-              hearts={element.hearts}
-              createdAt={element.createdAt}
-              id={element.id}
-              key={uuidv4()}
-            />
-          ))
-        : "laoding"}
-    </div>
   );
 };
 

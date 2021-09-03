@@ -27,22 +27,23 @@ const HomeBar: React.FC = (props) => {
   const autoGrow = (e) => {
     e.target.style.height = "50px";
     e.target.style.height = e.target.scrollHeight + "px";
+    console.log(e.target.scrollHeight);
   };
 
   return (
-     <div className="flex flex-col flex-1 lg:flex-initial lg:w-5/12" id="HomeBar">
+       <div className="flex flex-col flex-1 lg:flex-initial lg:w-5/12" id="HomeBar">
           <div className="flex border-l-2 border-r-2 border-gray-200 h-16">
             <h1 className="text-xl my-auto mx-2">Home</h1>
           </div>
-          <div className="grid grid-cols-profileAd grid-rows-tweetAd border-gray-200 border-2" id="tweetForm">
+          <form onSubmit={onSubmit} className="grid grid-cols-profileAd w-full grid-rows-tweetAd border-gray-200 border-2" id="tweetForm">
             <div className="row-start-1 row-end-3"><i className="fas fa-user fa-2x m-4"></i></div>
-            <div className="col-span-2 row-span-1"><textarea onInput={autoGrow} name="" id="tweetArea" className="h-14 w-full resize-none outline-none overflow-hidden mt-2 text-xl font-medium" value="Hello World"></textarea></div>
+            <div className="col-span-2 row-span-1"><textarea onInput={autoGrow}  onChange={handleChange} name="" id="tweetArea" className="h-32 w-full resize-none outline-none overflow-hidden mt-2 text-xl font-medium">Whats Happenning</textarea></div>
             <div className="col-span-2">
               <div className="flex justify-end w-11/12 my-auto">
-                <button className="rounded-full bg-blue-300 p-4  w-2/6 group hover:bg-blue-900 transition-colors"><h1 className="text-white group-hover:text-xl group-hover:text-black font-medium transition-all">Tweet</h1></button>
+                <button className="rounded-full bg-blue-300 p-4  w-2/6 group hover:bg-blue-900 transition-colors"><input type="submit" className="text-white bg-transparent group-hover:text-xl cursor-pointer group-hover:text-black font-medium transition-all" value="Tweet" /></button>
               </div>
             </div>
-          </div>
+          </form>
            {posts.length > 0
           ? posts.map((element) => (
               <Post

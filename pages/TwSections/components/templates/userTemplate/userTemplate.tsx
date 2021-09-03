@@ -2,16 +2,14 @@ import React from "react";
 
 const UserSchema: React.FC = (props) => {
   return (
-    <div className="container-row">
-      <div className="card">
-        <img src="images/logos/node.Png" alt="" />
-      </div>
-      <div className="info">
-        <h3>{props.userName} </h3>
-        <p>{"@" + props.userName}</p>
-      </div>
-      <div className="btn-outline">Follow</div>
-    </div>
+    <div className="flex items-center m-4">
+                <i className="fas fa-user fa-2x m-4"></i>
+                <div className="flex flex-col text-justify justify-center mx-2">
+                  <h1>{props.userName}</h1>
+                  <h1>{"@" + props.userName + "467"}</h1>
+                </div>
+                  <button className="rounded-full px-3 ml-auto font-medium h-10 mr-2 bg-blue-300">Follow</button>
+              </div>
   );
 };
 

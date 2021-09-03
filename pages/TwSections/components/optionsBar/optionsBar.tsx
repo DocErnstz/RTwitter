@@ -3,8 +3,8 @@ import Link from "next/link";
 
 const OptionsBar: React.FC = (props) => {
   const openForm = (e) => {
-    const formTweet = document.getElementById("formTweet");
-    formTweet.classList.remove("hide");
+    const formTweet = document.getElementById("modal");
+    formTweet.classList.remove("ModalHide");
   };
   return (
     <div className="flex flex-col lg:w-72 lg:flex-initial mr-4 h-screen sticky top-0 left-0">
@@ -15,7 +15,7 @@ const OptionsBar: React.FC = (props) => {
           <div className="flex-initial lg:flex-1 lg:ml-2 mb-12 items-center lg:items-start flex flex-col gap-4 ">
             <div className="flex-initial lg:flex-1 flex gap-4 rounded-full buttonHover transition-all	items-center">
               <a href="" className="flex-initial w-8">
-                <i className="fas fa-home fa-2x"></i>
+               <Link href="/TwSections/main"><i className="fas fa-home fa-2x"></i></Link> 
               </a>
               <h1 className="text-xl hidden lg:block ">Home</h1>
             </div>
@@ -43,7 +43,7 @@ const OptionsBar: React.FC = (props) => {
             </div>
             <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
               <a href="" className="flex-initial w-8"><i className="far fa-user fa-2x"></i></a>
-              <h1 className="text-xl hidden lg:block ">Profile</h1>
+              <h1 className="text-xl hidden lg:block "> <Link href="/TwSections/userMain">Profile</Link></h1>
             </div>
             <div className="flex-1 flex gap-4 items-center buttonHover transition-all	 rounded-full">
               <a href="" className="flex-initial w-8"><i className="far fa-comment-dots fa-2x"></i></a>
@@ -52,7 +52,7 @@ const OptionsBar: React.FC = (props) => {
            
           </div>
  
-          <button type="button" id="TweetModal" className="relative bg-blue-300 lg:p-6 lg:py-3 lg:w-4/5 my-4 lg:my-0 rounded-full mt-7 cursor-pointer transition-all group hover:bg-blue-900">
+          <button type="button" id="TweetModal" className="relative bg-blue-300 lg:p-6 lg:py-3 lg:w-4/5 my-4 lg:my-0 rounded-full mt-7 cursor-pointer transition-all group hover:bg-blue-900" onClick={openForm}>
            
               <h1 className="font-medium hidden lg:block text-white group-hover:text-black group-hover:text-xl transition-all">Tweet</h1>
               <div className="block lg:hidden">
@@ -66,8 +66,8 @@ const OptionsBar: React.FC = (props) => {
               <div className="row-start-1 row-end-3">
                 <i className="fas fa-user fa-2x m-4"></i>
               </div>
-              <div className="col-span-2 hidden lg:block">Exukasu</div>
-              <div className="col-span-2 hidden lg:block">@ernesto19182398</div>
+              <div className="col-span-2 hidden lg:block">{props.user.userName}</div>
+              <div className="col-span-2 hidden lg:block">{"@" + props.user.userName + "467"}</div>
             </div>
           </div>
         </div>
