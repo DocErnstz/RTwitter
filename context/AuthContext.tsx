@@ -2,6 +2,7 @@ import React, { useContext, createContext, ReactNode, useState } from "react";
 import { useRouter } from "next/router";
 import { Prisma } from "@prisma/client";
 
+
 export type newUser = {
   userName: string;
   password: string;
@@ -127,6 +128,7 @@ export function AuthProvider({ children }: Props) {
   const router = useRouter();
 
   const login = (user: newUser) => {
+
     signIn(user).then((result) => {
       console.log(result);
       router.push("http://localhost:3000/TwSections/main");

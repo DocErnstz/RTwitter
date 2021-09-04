@@ -4,9 +4,8 @@ import { AppProps } from "next/app";
 import { AuthProvider } from "../context/AuthContext";
 import React from "react";
 
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css' // Import the CSS
-config.autoAddCss = false //
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/js/all.js';
 import Form from "../components/form/formTweet";
 
 function MyApp({ Component, pageProps }: AppProps) {
