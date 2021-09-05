@@ -21,12 +21,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const cookies = new Cookies(req, res);
 
     const newUser = JSON.parse(req.body);
-
+    
     const oldUser = await prisma.user.findFirst({
       where: {
         email: newUser.email,
       },
     });
+    
 
     if (!oldUser)
       return res.status(404).json({ message: "User doesn't exist" });
@@ -35,7 +36,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       newUser.password,
       oldUser.password
     );
-
+  
     if (!isPasswordCorrect)
       return res.status(400).json({ message: "Invalid credentials" });
 

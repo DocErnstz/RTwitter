@@ -1,6 +1,8 @@
 import React, { useContext, createContext, ReactNode, useState } from "react";
 import { useRouter } from "next/router";
 import { Prisma } from "@prisma/client";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 export type newUser = {
@@ -15,7 +17,8 @@ export async function signUp(user: Prisma.UserCreateInput) {
   });
 
   if (!response.ok) {
-    throw new Error(response.statusText);
+     
+   
   }
   return response.json();
 }
@@ -24,11 +27,7 @@ export async function signIn(user: newUser) {
   const response = await fetch(`${window.location.origin}/api/users/SignIn`, {
     method: "POST",
     body: JSON.stringify(user),
-  });
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
+  })
 
   return response.json();
 }
@@ -66,7 +65,7 @@ type authContextType = {
   setter: (userI: UserData) => void;
   login: (user: newUser) => void;
   logout: () => void;
-  register: (user: Prisma.UserCreateInput) => void;
+  registers: (user: Prisma.UserCreateInput) => void;
   setterPosts: (post: Prisma.TweetCreateInput) => void;
 };
 
@@ -81,7 +80,7 @@ const authContextDefaultValues: authContextType = {
   setterPosts: (post: Prisma.TweetCreateInput) => {},
   login: (user: newUser) => {},
   logout: () => {},
-  register: (user: Prisma.UserCreateInput) => {},
+  registers: (user: Prisma.UserCreateInput) => {},
 };
 
 const AuthContext = createContext<authContextType>(authContextDefaultValues);
@@ -130,33 +129,45 @@ export function AuthProvider({ children }: Props) {
   const login = (user: newUser) => {
 
     signIn(user).then((result) => {
-      console.log(result);
-      router.push(`${window.location.origin}/TwSections/main`);
-      const userRes: UserData = {
-        createdAt: result.result.createdAt,
-        email: result.result.email,
-        id: result.result.id,
-        password: result.result.password,
-        userName: result.result.userName,
-        token: result.token,
+      
+      if(result.result){
+         router.push(`${window.location.origin}/TwSections/main`);
+         const userRes: UserData = {
+           createdAt: result.result?.createdAt,
+           email: result.result?.email,
+           id: result.result?.id,
+           password: result.result?.password,
+           userName: result.result?.userName,
+           token: result?.token,
       };
-      console.log(userRes);
       setter(userRes);
+      }  else {
+        toast(result.message, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+      }
+     
     });
   };
-  const register = (user: Prisma.UserCreateInput) => {
+  const registers = (user: Prisma.UserCreateInput) => {
     signUp(user).then((result) => {
-      router.push(`${window.location.origin}/TwSections/main`);
+      if(result.result){
+        router.push(`${window.location.origin}/TwSections/main`);
       const userRes: UserData = {
-        createdAt: result.result.createdAt,
-        email: result.result.email,
-        id: result.result.id,
-        password: result.result.password,
-        userName: result.result.userName,
-        token: result.token,
+        createdAt: result.result?.createdAt,
+        email: result.result?.email,
+        id: result.result?.id,
+        password: result.result?.password,
+        userName: result.result?.userName,
+        token: result?.token,
       };
-      console.log(userRes);
       setter(userRes);
+      } else {
+        toast(result.message, {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+      }
+      
     });
   };
   const setter = (userI: UserData) => {
@@ -188,7 +199,7 @@ export function AuthProvider({ children }: Props) {
     setter,
     login,
     logout,
-    register,
+    registers,
     setterPosts,
   };
   return (
