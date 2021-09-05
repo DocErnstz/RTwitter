@@ -2,6 +2,7 @@ import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import UserSchema from "../templates/userTemplate/userTemplate";
 import { v4 as uuidv4 } from "uuid";
+import { CircularProgress } from "@material-ui/core";
 
 const InfoBar: React.FC = () => {
   const { users } = useAuth();
@@ -23,7 +24,7 @@ const InfoBar: React.FC = () => {
           ? pickedUsers.map((element) => (
               <UserSchema userName={element.userName} key={uuidv4()} />
             ))
-          : "laoding"}
+          : <CircularProgress/>}
               
             </div>
           </div>

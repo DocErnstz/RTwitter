@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuth, newUser } from "../context/AuthContext";
 import { Prisma } from "@prisma/client";
 import { useForm } from "react-hook-form";
-import { ErrorMessage } from '@hookform/error-message';
+import { CircularProgress } from "@material-ui/core";
 
 
 const initialState = {

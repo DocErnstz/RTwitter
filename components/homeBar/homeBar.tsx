@@ -3,6 +3,7 @@ import Post from "../templates/tweetTemplate/tweetTemplate";
 import { useAuth } from "../../context/AuthContext";
 import { Prisma } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
+import { CircularProgress } from "@material-ui/core";
 
 const HomeBar: React.FC = (props) => {
   const { posts, setterPosts, userI } = useAuth();
@@ -57,7 +58,7 @@ const HomeBar: React.FC = (props) => {
                 key={uuidv4()}
               />
             ))
-          : "laoding"}
+          : <CircularProgress/>}
         </div>
   );
 };
