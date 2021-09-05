@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RTwitter
+simplified version of twitter
 
-## Getting Started
+## Description
 
-First, run the development server:
+ Web Application where you can tweet your thoughts.
+## Author
 
-```bash
-npm run dev
-# or
-yarn dev
+Ernesto Mercado 2021
+
+## Table of Contents
+* [About this Project](#about-this-project)
+* [Goal of this Project](#goal-of-this-project)
+* [Installation](#installation)
+* [Technologies](#technologies)
+* [What I learned](#what-i-learned)
+
+## About this Project
+Web application where you can argue any kind of topic with other people
+## Goal for this Project
+The goal of this project was to learn about context api state management fetching calls from a postgresql database through an orm like prisma and styling the components with tailwind and a bit of css
+
+## Installation
+```
+# Install dependencies client
+$ npm install
+# Install dependencies Server
+$ npm install
+
+# Run the client & server with concurrently
+$ npm start
+
+# Client
+# runs on http://localhost:3000
+# API 
+# runs on http://localhost:3000/api
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies
+* Nextjs
+* Typescript
+* ContextAPI
+* CSS tailwind
+* Prisma
+* Postgresql
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## What I learned
+I learned how to handle an auth system with validations using react-hook-form and how to manage the state of the app with contextAPI while using typescript
