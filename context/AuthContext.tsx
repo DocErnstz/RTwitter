@@ -9,7 +9,7 @@ export type newUser = {
 };
 
 export async function signUp(user: Prisma.UserCreateInput) {
-  const response = await fetch("http://localhost:3000/api/users/SignUp", {
+  const response = await fetch(`${window.location.origin}/api/users/SignUp`, {
     method: "POST",
     body: JSON.stringify(user),
   });
@@ -21,7 +21,7 @@ export async function signUp(user: Prisma.UserCreateInput) {
 }
 
 export async function signIn(user: newUser) {
-  const response = await fetch("http://localhost:3000/api/users/SignIn", {
+  const response = await fetch(`${window.location.origin}/api/users/SignIn`, {
     method: "POST",
     body: JSON.stringify(user),
   });
@@ -34,7 +34,7 @@ export async function signIn(user: newUser) {
 }
 
 export async function ClearCookies() {
-  const response = await fetch("http://localhost:3000/api/users/logout", {
+  const response = await fetch(`${window.location.origin}/api/users/logout`, {
     method: "GET",
   });
 
@@ -46,7 +46,7 @@ export async function ClearCookies() {
 }
 
 export async function createTweet(tweet: Prisma.TweetCreateInput) {
-  const response = await fetch("http://localhost:3000/api/tweets/CreateTweet", {
+  const response = await fetch(`${window.location.origin}/api/tweets/CreateTweet`, {
     method: "POST",
     body: JSON.stringify(tweet),
   });
@@ -131,7 +131,7 @@ export function AuthProvider({ children }: Props) {
 
     signIn(user).then((result) => {
       console.log(result);
-      router.push("http://localhost:3000/TwSections/main");
+      router.push(`${window.location.origin}/TwSections/main`);
       const userRes: UserData = {
         createdAt: result.result.createdAt,
         email: result.result.email,
@@ -146,7 +146,7 @@ export function AuthProvider({ children }: Props) {
   };
   const register = (user: Prisma.UserCreateInput) => {
     signUp(user).then((result) => {
-      router.push("http://localhost:3000/TwSections/main");
+      router.push(`${window.location.origin}/TwSections/main`);
       const userRes: UserData = {
         createdAt: result.result.createdAt,
         email: result.result.email,
@@ -174,7 +174,7 @@ export function AuthProvider({ children }: Props) {
     
     ClearCookies().then(() => {
       setUserI(initData);
-      router.push("http://localhost:3000/");
+      router.push(`${window.location.origin}`);
     });
   };
 
