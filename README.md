@@ -16,7 +16,7 @@ Ernesto Mercado 2021
 * [What I learned](#what-i-learned)
 
 ## About this Project
-Web application where you can argue any kind of topic with other people
+Web application where you can ponder with other people
 ## Goal for this Project
 The goal of this project was to learn about context api state management fetching calls from a postgresql database through an orm like prisma and styling the components with tailwind and a bit of css
 
